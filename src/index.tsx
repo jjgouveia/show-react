@@ -3,7 +3,8 @@ import type { ReactNode } from 'react';
 import type { ShowProps } from './Show.types';
 
 function ShowComponent({ when, fallback = null, children }: ShowProps): ReactNode {
-  if (when) {
+  const show = Boolean(when);
+  if (show) {
     if (typeof children === 'function') {
       return (children as () => ReactNode)();
     }

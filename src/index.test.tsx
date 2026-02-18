@@ -91,4 +91,36 @@ describe('Show', () => {
       expect(container.firstChild).toBeNull();
     });
   });
+
+  describe('falsy values (strict boolean coercion)', () => {
+    it('does not render children when when is 0', () => {
+      render(
+        <Show when={0} fallback={<span data-testid="fallback">Fallback</span>}>
+          <span>Visible</span>
+        </Show>
+      );
+      expect(screen.getByTestId('fallback')).toBeInTheDocument();
+      expect(screen.queryByText('Visible')).not.toBeInTheDocument();
+    });
+
+    it('does not render children when when is NaN', () => {
+      render(
+        <Show when={NaN} fallback={<span data-testid="fallback">Fallback</span>}>
+          <span>Visible</span>
+        </Show>
+      );
+      expect(screen.getByTestId('fallback')).toBeInTheDocument();
+      expect(screen.queryByText('Visible')).not.toBeInTheDocument();
+    });
+
+    it('does not render children when when is empty string', () => {
+      render(
+        <Show when={''} fallback={<span data-testid="fallback">Fallback</span>}>
+          <span>Visible</span>
+        </Show>
+      );
+      expect(screen.getByTestId('fallback')).toBeInTheDocument();
+      expect(screen.queryByText('Visible')).not.toBeInTheDocument();
+    });
+  });
 });
