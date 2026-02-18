@@ -1,5 +1,5 @@
 {
-  "name": "show-react",
+  "name": "@lazylab/show-react",
   "version": "1.0.0",
   "description": "A lightweight, performant conditional rendering component for React and Next.js",
   "main": "./dist/index.js",

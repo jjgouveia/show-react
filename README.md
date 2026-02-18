@@ -10,11 +10,11 @@ A lightweight, performant conditional rendering component for React and Next.js.
 ## Installation
 
 ```bash
-npm install show-react
+npm install @lazylab/show-react
 # or
-pnpm add show-react
+pnpm add @lazylab/show-react
 # or
-yarn add show-react
+yarn add @lazylab/show-react
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ yarn add show-react
 ### Basic Usage
 
 ```tsx
-import { Show } from 'show-react';
+import { Show } from '@lazylab/show-react';
 
 function MyComponent() {
   const [isVisible, setIsVisible] = useState(false);
@@ -40,7 +40,7 @@ function MyComponent() {
 If you have expensive components or calculations inside the conditional block, you can pass a function as children. This ensures the content is only evaluated when `when` is true.
 
 ```tsx
-import { Show } from 'show-react';
+import { Show } from '@lazylab/show-react';
 
 function MyComponent() {
   return (

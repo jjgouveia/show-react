@@ -15,13 +15,13 @@ Informe **Username**, **Password** e **Email** (e OTP se tiver 2FA).
 
 ## 2. Conferir o pacote
 
-- **Nome**: em `package.json` está `"name": "show-react"`. Verifique se está livre:
+- **Nome**: o pacote está no escopo da org **lazylab**: `@lazylab/show-react`. Verifique se está livre:
 
 ```bash
-npm view show-react
+npm view @lazylab/show-react
 ```
 
-Se der **404**, o nome está disponível.
+Se der **404**, o nome está disponível. Pacotes escopados exigem `npm publish --access public`.
 
 - **Versão**: use [SemVer](https://semver.org/). Para a primeira publicação, `1.0.0` é o ideal.
 - **Arquivos publicados**: o campo `"files": ["dist"]` faz com que só a pasta `dist` seja enviada. Não vão para o NPM: `src/`, testes, configs locais, etc.
@@ -51,8 +51,7 @@ Na pasta do projeto (onde está o `package.json`):
 npm publish
 ```
 
-- Para pacote **não escopado** (como `show-react`): o nome precisa estar livre e você precisa estar logado.
-- Para pacote **escopado** (ex.: `@seu-usuario/show-react`): use:
+- Este pacote é **escopado** (`@lazylab/show-react`). Sempre use:
 
 ```bash
 npm publish --access public
@@ -60,12 +59,20 @@ npm publish --access public
 
 (o padrão de escopo é restrito; `--access public` deixa o pacote público e instalável por qualquer um).
 
+### Erro 403 Forbidden ao publicar
+
+- **Conta/org**: Se você publica pela org **lazylab**, o pacote precisa estar no escopo `@lazylab/show-react`. Pacotes não escopados (`show-react`) podem ser bloqueados. Use o nome `@lazylab/show-react` e `npm publish --access public`.
+- **Nome já em uso**: Confira com `npm view @lazylab/show-react`. Se existir e você não for da org **lazylab**, escolha outro nome no mesmo escopo ou use outro escopo.
+- **E-mail não verificado**: No [npm](https://www.npmjs.com/) → Account → verifique se o e-mail está confirmado. Sem isso o npm bloqueia a publicação.
+- **Token sem permissão**: Se estiver usando CI (GitHub Actions), o token deve ser do tipo **Automation** ou **Publish**. Em Access Tokens, crie um novo com permissão de publicação.
+- **Proteção de publicação (npm Pro/Teams)**: Se sua conta tiver “Require two-factor authentication for publish” ou restrições de pacote, ajuste em Package Access / Settings.
+
 ---
 
 ## 5. Depois de publicado
 
-- Página do pacote: `https://www.npmjs.com/package/show-react`
-- Instalação: `npm install show-react`
+- Página do pacote: `https://www.npmjs.com/package/@lazylab/show-react`
+- Instalação: `npm install @lazylab/show-react`
 
 ---
 
@@ -123,7 +130,7 @@ Se preferir publicar sempre manualmente, ignore o workflow `publish.yml` ou remo
 ## Checklist antes de publicar
 
 - [ ] `npm login` feito
-- [ ] Nome do pacote disponível (`npm view show-react` → 404)
+- [ ] Nome do pacote disponível (`npm view @lazylab/show-react` → 404) ou você tem permissão na org **lazylab**
 - [ ] `npm run test:run` passando
 - [ ] `npm run build` gerando `dist/`
 - [ ] README e dados em `package.json` (author, description, etc.) revisados
