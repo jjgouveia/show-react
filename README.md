@@ -6,6 +6,7 @@ A lightweight, performant conditional rendering component for React and Next.js.
 - ⚡ **Performant**: Supports lazy evaluation of children via render props to avoid unnecessary instantiation.
 - 🛡️ **Type-safe**: Built with TypeScript.
 - 🧩 **Flexible**: Supports `fallback` prop for "else" cases.
+- ✅ **Falsy-safe**: `when` is coerced to boolean, so `0`, `NaN` and `""` never render children (no accidental "0" or "NaN" in the UI).
 
 ## Installation
 
@@ -57,9 +58,9 @@ function MyComponent() {
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `when` | `boolean` \| `null` \| `undefined` | Required | The condition to check. |
+| `when` | `unknown` | Required | Any value; coerced to boolean (0, NaN, "" → falsy). |
 | `fallback` | `ReactNode` | `null` | Content to render when condition is falsy. |
-| `children` | `ReactNode` \| `() => ReactNode` | Required | Content to render when condition is truthy. |
+| `children` | `ReactNode` \| `() => ReactNode` | Required | Content to render when condition is truthy. Use a function for lazy evaluation. |
 
 ## License
 

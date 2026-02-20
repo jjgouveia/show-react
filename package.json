@@ -1,6 +1,6 @@
 {
   "name": "@lazylab/show-react",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A lightweight, performant conditional rendering component for React and Next.js",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -13,6 +13,7 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "sideEffects": false,
   "files": [
     "dist"
   ],
@@ -28,12 +29,28 @@
     "nextjs",
     "conditional-rendering",
     "show",
-    "performance"
+    "performance",
+    "jsx",
+    "tsx",
+    "toggle",
+    "visibility",
+    "render",
+    "utility",
+    "component",
+    "lightweight",
+    "zero-dependency"
   ],
   "author": "Jarbas Gouveia",
+  "homepage": "https://github.com/jjgouveia/show-react#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/jjgouveia/show-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jjgouveia/show-react/issues"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   },
   "license": "MIT",
   "peerDependencies": {

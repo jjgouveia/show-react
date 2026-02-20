@@ -2,9 +2,10 @@ import type { ReactNode } from 'react';
 
 export interface ShowProps {
   /**
-   * The condition to check. If truthy, children are rendered.
+   * The condition to check. Coerced to boolean (strict), so 0, NaN and "" do not render children.
+   * If truthy, children are rendered.
    */
-  when: boolean | undefined | null;
+  when: unknown;
   /**
    * Content to render when the condition is falsy.
    */
